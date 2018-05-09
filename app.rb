@@ -100,25 +100,5 @@ def musait_saatler(saatler, randevular, randevu_kisi)
       uygun_saatler << saat[:saat] if (randevu_kisi - 1 == kisi)
     end
   end
-
-  puts @saatler
-  puts "*"*90
-
-  if uygun_saatler.nil?
-    puts "Sonuç bulunamadı maalesef"
-  else
-    puts "Uygun saatler"
-    puts uygun_saatler
-  end
+  uygun_saatler
 end
-
-musait_saatler(saatler, randevular, 2)
-
-
-
-
-
-
-
-
-

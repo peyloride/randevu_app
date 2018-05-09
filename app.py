@@ -73,7 +73,7 @@ def musait_saatler(saatler, randevular, randevu_kisi):
     print("Uygun saatler")
     print(uygun_saatler)
 
-musait_saatler(saatler, randevular, 1)
+musait_saatler(saatler, randevular, 2)
 
 
 
