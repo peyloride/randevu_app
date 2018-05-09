@@ -58,13 +58,16 @@ randevular = [
     {'kisi_sayisi': 4, 'saat': '10:00'}
 ]
 
+# Args: Array, String, Integer
 # Verilen saatten n sonraki saatin, @saat dizisi içerisindeki index'ini verir.
 # Örnek: n_sonraki_saat_index('09:40', 1) için 3 döner.
+# Dönüş tipi: Integer
 def n_sonraki_saat_index(saatler, randevu_saati, n)
   saat_index = saatler.find_index(saatler.find { |saat| saat[:saat] == randevu_saati })
   saat_index + n
 end
 
+# Args: Array, Array
 # Daha önceden belirtilen kotalardan düşecek şekilde var olan randevuları yerleştirir.
 def randevuları_yerlestir(saatler, randevular)
   randevular.each do |randevu|
@@ -74,12 +77,16 @@ def randevuları_yerlestir(saatler, randevular)
   end
 end
 
+# Args: Array, String, n
 # Verilen saat ve kisiye göre saatler dizisinde bir eleman olup olmadığına ve bu elemanın
 # kotasının 0'dan büyük veya eşit olup olmadığını kontrol eder
+# Dönüş tipi: Boolean
 def randevu_verilemez?(saatler, saat, kisi)
-  saatler[n_sonraki_saat_index(saatler, saat[:saat], kisi)].nil? || saatler[n_sonraki_saat_index(saatler, saat[:saat], kisi)][:kota] <= 0
+  saat_index = n_sonraki_saat_index(saatler, saat[:saat], kisi)
+  saatler[saat_index].nil? || saatler[saat_index][:kota] <= 0
 end
 
+# Args: Array, Array, Integer
 # saatler dizisindeki saat ve kotalara uygun şekilde var olan randevular listesi haricinde
 # 'randevu_kisi' parametresi ile belirtilen sayıda kişi için uygun randevuları kontrol eder.
 # Uygun randevu bulunması durumunda randevu saatlerini döner.
